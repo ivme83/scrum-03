@@ -3,6 +3,14 @@ import {
   withRouter,
   Link,
 }                             from 'react-router-dom';
+import {
+  Button,
+  Control,
+  Field,
+  Icon,
+  Input,
+  Label,
+} from "bloomer";
 
 import { SignUpLink }         from './SignUp';
 import {PasswordForgetLink }  from './PasswordForget';
@@ -82,22 +90,32 @@ class SignInForm extends Component {
       email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+      <form onSubmit={this.onSubmit} style={{width: '600px'}}>
+        <Field>
+            <Label>Email</Label>
+            <Control hasIcons>
+                <Input isColor='success' isSize='large' type="text" placeholder='Email Address' value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} />
+                <Icon isSize='small' isAlign='left'>
+                    <span className="fa fa-user" aria-hidden="true" />
+                </Icon>
+            </Control>
+        </Field>
+        <Field>
+            <Label>Password</Label>
+            <Control hasIcons>
+                <Input isColor='success' isSize='large' type="password" placeholder='password' value={password} onChange={event => this.setState(byPropKey('password', event.target.value))} />
+                <Icon isSize='small' isAlign='left'>
+                    <span className="fa fa-key" aria-hidden="true" />
+                </Icon>
+            </Control>
+        </Field>
+        <Field isGrouped='right'>
+          <Control>
+            <Button disabled={isInvalid} isColor='primary' type="submit">
+              Sign In
+            </Button>
+          </Control>
+        </Field>
         {/* <button type="button" onClick={this.popUp}>
           Google Sign In
         </button> */}
