@@ -1,7 +1,8 @@
-import React from 'react';
+import React              from 'react';
 
-import AuthUserContext from './AuthUserContext';
-import { firebase } from '../firebase';
+import AuthUserContext    from './AuthUserContext';
+import { firebase }       from '../firebase';
+import api                from '../utils/api';
 
 const withAuthentication = (Component) =>
   class WithAuthentication extends React.Component {
@@ -15,9 +16,16 @@ const withAuthentication = (Component) =>
 
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
+
+        api.doFindOneUser(authUser.uid)
+        .then((results) => {
+          let role = results.data.role;
+          authUser.role = role;
+
         authUser
           ? this.setState(() => ({ authUser }))
           : this.setState(() => ({ authUser: null }));
+        });
       });
     }
 

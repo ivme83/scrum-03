@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component }     from 'react';
+
 import { 
   Link,
   withRouter,
-} from 'react-router-dom';
+}                               from 'react-router-dom';
 
-import { auth, db } from '../firebase';
+import {
+  Button,
+  Control,
+  Field,
+  Icon,
+  Input,
+  Label,
+  Radio,
+}                               from "bloomer";
 
-import * as routes from '../constants/routes';
+import { auth }                 from '../firebase';
+import api                      from '../utils/api';
+
+import * as routes              from '../constants/routes';
 
 const SignUpPage = ({ history }) =>
   <div>
@@ -49,7 +61,7 @@ class SignUpForm extends Component {
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your own accessible firebase Database too
-        db.doCreateUser(authUser.user.uid, username, email, role)
+        api.doCreateUser(authUser.user.uid, username, email, role)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
             history.push(routes.HOME);
@@ -64,6 +76,12 @@ class SignUpForm extends Component {
       });
 
     event.preventDefault();
+  }
+
+  handleOptionChange = (changeEvent) => {
+    this.setState({
+      role: changeEvent.target.value
+    });
   }
 
   render() {
@@ -85,39 +103,91 @@ class SignUpForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          value={username}
-          onChange={event => this.setState(byPropKey('username', event.target.value))}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={role}
-          onChange={event => this.setState(byPropKey('role', event.target.value))}
-          type="text"
-          placeholder="Teacher or Student"
-        />
-        <input
-          value={passwordOne}
-          onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-          type="password"
-          placeholder="password"
-        />
-        <input
-          value={passwordTwo}
-          onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+        <Field>
+          <Label>Username</Label>
+          <Control hasIcons>
+            <Input
+              isColor="success"
+              isSize="large"
+              type="text"
+              placeholder="Full Name"
+              value={username}
+              onChange={event =>
+                this.setState(byPropKey("username", event.target.value))
+              }
+            />
+            <Icon isSize="small" isAlign="left">
+              <span className="fa fa-user" aria-hidden="true" />
+            </Icon>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Email</Label>
+          <Control hasIcons>
+            <Input
+              isColor="success"
+              isSize="large"
+              type="text"
+              placeholder="email"
+              value={email}
+              onChange={event =>
+                this.setState(byPropKey("email", event.target.value))
+              }
+            />
+            <Icon isSize="small" isAlign="left">
+              <span className="fa fa-user" aria-hidden="true" />
+            </Icon>
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+            <Radio name="userRole" value="teacher" checked={this.state.role === 'teacher'} onChange={this.handleOptionChange} >Teacher</Radio>
+            <Radio name="userRole" value="student" checked={this.state.role === 'student'} onChange={this.handleOptionChange} >Student</Radio>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Password</Label>
+          <Control hasIcons>
+            <Input
+              isColor="success"
+              isSize="large"
+              type="password"
+              placeholder="password"
+              value={passwordOne}
+              onChange={event =>
+                this.setState(byPropKey("passwordOne", event.target.value))
+              }
+            />
+            <Icon isSize="small" isAlign="left">
+              <span className="fa fa-key" aria-hidden="true" />
+            </Icon>
+          </Control>
+        </Field>
+        <Field>
+          <Label>Password</Label>
+          <Control hasIcons>
+            <Input
+              isColor="success"
+              isSize="large"
+              type="password"
+              placeholder="Confirm Password"
+              value={passwordTwo}
+              onChange={event =>
+                this.setState(byPropKey("passwordTwo", event.target.value))
+              }
+            />
+            <Icon isSize="small" isAlign="left">
+              <span className="fa fa-key" aria-hidden="true" />
+            </Icon>
+          </Control>
+        </Field>
+        <Field>
+          <Control>
+            <Button disabled={isInvalid} isColor="primary" type="submit">
+              Sign Up
+            </Button>
+          </Control>
+        </Field>
 
         { error && <p>{error.message}</p> }
       </form>
