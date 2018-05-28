@@ -80,7 +80,7 @@ class NavigationAuth extends React.Component {
           </NavbarStart>
           <NavbarEnd>
             <NavbarItem>
-              <Button onClick={auth.doSignOut}>Sign Out</Button>
+              <Button onClick={() => auth.doSignOut()}>Sign Out</Button>
             </NavbarItem>
           </NavbarEnd>
         </NavbarMenu>
