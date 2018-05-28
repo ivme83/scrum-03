@@ -20,6 +20,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "git add . && git commit -m \"Deploy to heroku\" && git push heroku master"
-  },
-  "proxy": "http://localhost:3001/"
+  }
 }
