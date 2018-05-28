@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const hostname = "http://localhost:3000";
+// const hostname = "http://localhost:3000";
+const hostname = "https://glacial-oasis-99575.herokuapp.com";
+
 
 export default {
 //   // Gets all books
