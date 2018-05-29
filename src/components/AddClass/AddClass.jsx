@@ -7,18 +7,18 @@ import api from "../../utils/api";
 // import withAuthorization from "../withAuthorization";
 import AuthUserContext from "../AuthUserContext";
 
-const CreateClass = ({ authUser }) => (
+const AddClass = ({ authUser }) => (
   <AuthUserContext.Consumer>
     {authUser => (
       <div>
-        <CreateClassForm userID={authUser.uid} />
+        <AddClassForm userID={authUser.uid} />
       </div>
     )}
   </AuthUserContext.Consumer>
 );
 
 const INITIAL_STATE = {
-  class_name: "",
+  class_code: "",
   error: null
 };
 
@@ -26,7 +26,7 @@ const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value
 });
 
-class CreateClassForm extends Component {
+class AddClassForm extends Component {
   constructor(props) {
     super(props);
 
@@ -34,16 +34,12 @@ class CreateClassForm extends Component {
   }
 
   onSubmit = event => {
-    const { class_name } = this.state;
+    const { class_code } = this.state;
 
-    let classCode = Math.random()
-      .toString(36)
-      .substring(2, 8);
+    let student_id = this.props.userID;
 
-    let teacher_id = this.props.userID;
-
-    //api call to create class
-    api.doCreateClass(teacher_id, class_name, classCode)
+    //api call to add class
+    api.doAddClass(student_id, class_code)
       .then(result => {
         this.setState(() => ({ ...INITIAL_STATE }));
       })
@@ -55,23 +51,23 @@ class CreateClassForm extends Component {
   };
 
   render() {
-    const { class_name, error } = this.state;
+    const { class_code, error } = this.state;
 
-    const isInvalid = class_name === "";
+    const isInvalid = class_code === "";
 
     return (
       <form onSubmit={this.onSubmit}>
         <Field>
-          <Label>New Class Name</Label>
+          <Label>Add Class Code</Label>
           <Control hasIcons>
             <Input
               isColor="success"
               isSize="large"
               type="text"
-              placeholder="Class Name"
-              value={class_name}
+              placeholder="Class Code"
+              value={class_code}
               onChange={event =>
-                this.setState(byPropKey("class_name", event.target.value))
+                this.setState(byPropKey("class_code", event.target.value))
               }
             />
             <Icon isSize="small" isAlign="left">
@@ -82,7 +78,7 @@ class CreateClassForm extends Component {
         <Field>
           <Control>
             <Button disabled={isInvalid} isColor="primary" type="submit">
-              Create Class
+              Add Class
             </Button>
           </Control>
         </Field>
@@ -93,8 +89,4 @@ class CreateClassForm extends Component {
   }
 }
 
-// const authCondition = authUser => !!authUser && authUser.role === "teacher";
-
-// export default withAuthorization(authCondition)(CreateClass);
-
-export default CreateClass;
+export default AddClass;

@@ -11,13 +11,13 @@ const Home = () =>
 
 const TeacherMenu = () => {
   return (
-    <p><Link to={routes.CREATE_CLASS}>Create Class</Link></p>
+    <p><Link to={routes.CLASS_MENU}>Create Class</Link></p>
   );
 };
 
 const StudentMenu = () => {
   return (
-    <p>Hello Student</p>
+    <p><Link to={routes.STUDENT_MENU}>Add a Class</Link></p>
   );
 };
 

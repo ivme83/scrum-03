@@ -42,12 +42,22 @@ export default {
       name: class_name,
       class_code: classCode
     };
+
     return axios.post(hostname+"/api/class", classData);
   },
 
-  getTeachersClasses: function(teacher_id) {
+  doAddClass: function (student_id, class_code) {
+    let addClassData = {
+      fbuid: student_id,
+      class_code: class_code
+    };
+
+    return axios.post(hostname + "/api/class/addClass", addClassData);
+  },
+
+  getClasses: function(id) {
     let userData = {
-      fbuid: teacher_id
+      fbuid: id
     };
     
     return axios.post(hostname+"/api/class/getClasses", userData);

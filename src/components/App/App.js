@@ -14,7 +14,8 @@ import PasswordForgetPage from '../PasswordForget';
 import HomePage           from '../Home';
 import AccountPage        from '../Account';
 import Sidebar            from '../Sidebar';
-import CreateClass        from '../CreateClass';
+import ClassMenu          from '../ClassMenu';
+import StudentMenu        from '../StudentMenu';
 
 import * as routes        from '../../constants/routes';
 
@@ -32,7 +33,8 @@ const App = () =>
         <Route exact path={routes.PASSWORD_FORGET}  component={() => <PasswordForgetPage />} />
         <Route exact path={routes.HOME}             component={() => <HomePage />} />
         <Route exact path={routes.ACCOUNT}          component={() => <AccountPage />} />
-        <Route exact path={routes.CREATE_CLASS}     component={() => <CreateClass />} />
+        <Route exact path={routes.CLASS_MENU}       component={() => <ClassMenu />} />
+        <Route exact path={routes.STUDENT_MENU}     component={() => <StudentMenu />} />
       </div>
     </div>
   </Router>

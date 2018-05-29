@@ -17,18 +17,6 @@ const withAuthentication = (Component) =>
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
 
-        // if (authUser !== null) {
-        //   api.doFindOneUser(authUser.uid)
-        //     .then((results) => {
-        //       let role = results.data.role;
-        //       authUser.role = role;
-        //   });
-        // }
-
-        // authUser
-        //   ? this.setState(() => ({ authUser }))
-        //   : this.setState(() => ({ authUser: null }));
-
         if (authUser) {
           api.doFindOneUser(authUser.uid)
             .then((results) => {
