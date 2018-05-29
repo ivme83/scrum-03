@@ -123,12 +123,6 @@ class NavigationNonAuth extends React.Component {
           />
         </NavbarBrand>
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
-          <NavbarStart>
-            <NavbarItem>
-              <Link to={routes.LANDING}>Landing</Link>
-            </NavbarItem>
-
-          </NavbarStart>
           <NavbarEnd>
             <NavbarItem>
               <Button><Link to={routes.SIGN_IN}>Sign In</Link></Button>
