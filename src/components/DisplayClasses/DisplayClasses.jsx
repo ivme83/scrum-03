@@ -12,12 +12,13 @@ class DisplayClasses extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let classList = [];
 
-        api.getClasses(this.props.userID)
+        api.getTeacherClasses(this.props.userID)
             .then(results => {
                 classList = results.data.classes;
+                // console.log(results);
                 this.setState({ classList });
             })
             .catch(err => {

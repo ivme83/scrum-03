@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, MenuLabel, MenuList, MenuLink } from "bloomer";
+import { Menu, MenuLabel, MenuList } from "bloomer";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import * as routes from "../../constants/routes";
@@ -10,19 +10,16 @@ const StudentBar = () => {
       <MenuLabel>Student</MenuLabel>
       <MenuList>
         <li>
-          <MenuLink>
-            <Link to={routes.HOME}>Home</Link>
-          </MenuLink>
+          <Link to={routes.HOME}>Home</Link>
         </li>
         <li>
-          <MenuLink>
-            <Link to={routes.ACCOUNT}>Account</Link>
-          </MenuLink>
+          <Link to={routes.ACCOUNT}>Manage Account</Link>
         </li>
         <li>
-          <MenuLink>
-            <Link to={routes.STUDENT_MENU}>Add a Class</Link>
-          </MenuLink>
+          <Link to={routes.STUDENT_CLASS}>Add a Class</Link>
+        </li>
+        <li>
+          <Link to={routes.STUDENT_PROJECT}>Add a Project</Link>
         </li>
       </MenuList>
     </Menu>

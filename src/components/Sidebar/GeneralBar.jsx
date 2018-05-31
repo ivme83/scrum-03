@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, MenuLabel, MenuList, MenuLink } from "bloomer";
+import { Menu, MenuLabel, MenuList } from "bloomer";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import * as routes from "../../constants/routes";
@@ -10,9 +10,10 @@ const GeneralBar = () => {
       <MenuLabel>Menu</MenuLabel>
       <MenuList>
         <li>
-          <MenuLink>
             <Link to={routes.SIGN_IN}>Sign In</Link>
-          </MenuLink>
+        </li>
+        <li>
+            <Link to={routes.SIGN_UP}>Sign Up</Link>
         </li>
       </MenuList>
     </Menu>

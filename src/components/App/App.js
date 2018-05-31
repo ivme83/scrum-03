@@ -16,6 +16,8 @@ import AccountPage        from '../Account';
 import Sidebar            from '../Sidebar';
 import ClassMenu          from '../ClassMenu';
 import StudentMenu        from '../StudentMenu';
+import ProjectMenu        from '../ProjectMenu';
+import TeacherStudentView from '../TeacherStudentView';
 
 import * as routes        from '../../constants/routes';
 
@@ -27,14 +29,16 @@ const App = () =>
       <Navigation />
       <div className="main-grid">
         <Sidebar />
-        <Route exact path={routes.LANDING}          component={() => <LandingPage />} />
-        <Route exact path={routes.SIGN_UP}          component={() => <SignUpPage />} />
-        <Route exact path={routes.SIGN_IN}          component={() => <SignInPage />} />
-        <Route exact path={routes.PASSWORD_FORGET}  component={() => <PasswordForgetPage />} />
-        <Route exact path={routes.HOME}             component={() => <HomePage />} />
-        <Route exact path={routes.ACCOUNT}          component={() => <AccountPage />} />
-        <Route exact path={routes.CLASS_MENU}       component={() => <ClassMenu />} />
-        <Route exact path={routes.STUDENT_MENU}     component={() => <StudentMenu />} />
+        <Route exact path={routes.LANDING}              component={() => <LandingPage />} />
+        <Route exact path={routes.SIGN_UP}              component={() => <SignUpPage />} />
+        <Route exact path={routes.SIGN_IN}              component={() => <SignInPage />} />
+        <Route exact path={routes.PASSWORD_FORGET}      component={() => <PasswordForgetPage />} />
+        <Route exact path={routes.HOME}                 component={() => <HomePage />} />
+        <Route exact path={routes.ACCOUNT}              component={() => <AccountPage />} />
+        <Route exact path={routes.TEACHER_CLASS}        component={() => <ClassMenu />} />
+        <Route exact path={routes.STUDENT_CLASS}        component={() => <StudentMenu />} />
+        <Route exact path={routes.STUDENT_PROJECT}      component={() => <ProjectMenu />} />
+        <Route exact path={routes.TEACHER_STUDENT_VIEW} component={() => <TeacherStudentView />} />
       </div>
     </div>
   </Router>

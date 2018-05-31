@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const hostname = "http://localhost:3000";
-const hostname = "https://glacial-oasis-99575.herokuapp.com";
+const hostname = "http://localhost:3000";
+// const hostname = "https://glacial-oasis-99575.herokuapp.com";
 
 
 export default {
@@ -46,6 +46,25 @@ export default {
     return axios.post(hostname+"/api/class", classData);
   },
 
+  doCreateProject: function(student_id, project_name, description, project_code) {
+    let projectData = {
+      student_id: student_id,
+      project_name: project_name,
+      description: description,
+      project_code: project_code
+    };
+
+    return axios.post(hostname + "/api/project/addProject", projectData);
+  },
+
+  getProjects: function(id) {
+    let userData = {
+      fbuid: id
+    };
+
+    return axios.post(hostname+"/api/project/getProjects", userData);
+  },
+
   doAddClass: function (student_id, class_code) {
     let addClassData = {
       fbuid: student_id,
@@ -55,12 +74,20 @@ export default {
     return axios.post(hostname + "/api/class/addClass", addClassData);
   },
 
-  getClasses: function(id) {
+  getTeacherClasses: function(id) {
     let userData = {
       fbuid: id
     };
     
-    return axios.post(hostname+"/api/class/getClasses", userData);
+    return axios.post(hostname+"/api/class/getTeacherClasses", userData);
+  },
+
+  getStudentsFromClass: function(class_id) {
+    let teacherClassData = {
+      class_id: class_id
+    };
+
+    return axios.post(hostname + "/api/class/getStudentsFromClass", teacherClassData);
   }
 
 };
