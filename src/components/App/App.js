@@ -38,7 +38,9 @@ const App = () =>
         <Route exact path={routes.TEACHER_CLASS}        component={() => <ClassMenu />} />
         <Route exact path={routes.STUDENT_CLASS}        component={() => <StudentMenu />} />
         <Route exact path={routes.STUDENT_PROJECT}      component={() => <ProjectMenu />} />
-        <Route exact path={routes.TEACHER_STUDENT_VIEW} component={() => <TeacherStudentView />} />
+        {/* <Route exact path={routes.TEACHER_STUDENT_VIEW} component={() => <TeacherStudentView />} /> */}
+        {/* <Route path="/teacher-student-view/:id" component={TeacherStudentView} /> */}
+        <Route path="/teacher-student-view/:id" component={() => <TeacherStudentView />} />
       </div>
     </div>
   </Router>

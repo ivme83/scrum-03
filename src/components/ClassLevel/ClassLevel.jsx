@@ -35,7 +35,6 @@ class TeacherClassLevel extends Component {
         
         api.getStudentsFromClass(id)
             .then(results => {
-                console.log(results.data.students);
                 this.setState(state => ({ 
                     isActive: !state.isActive,
                     classInfo: results.data.students

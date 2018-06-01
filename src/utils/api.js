@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const hostname = "http://localhost:3000";
-// const hostname = "https://glacial-oasis-99575.herokuapp.com";
+// const hostname = "http://localhost:3000";
+const hostname = "https://glacial-oasis-99575.herokuapp.com";
 
 
 export default {
@@ -88,6 +88,14 @@ export default {
     };
 
     return axios.post(hostname + "/api/class/getStudentsFromClass", teacherClassData);
+  },
+
+  getStudent(id) {
+    let studentData = {
+      user: id
+    };
+
+    return axios.post(hostname + "/api/user/getStudent", studentData)
   }
 
 };

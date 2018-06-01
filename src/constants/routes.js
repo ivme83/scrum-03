@@ -8,4 +8,4 @@ export const TEACHER_CLASS          = '/teacher-class';
 export const STUDENT_CLASS          = '/student-class';
 export const STUDENT_PROJECT        = '/student-project';
 export const TEACHER_VIEW_CLASS     = '/teacher-class-view';
-export const TEACHER_STUDENT_VIEW   = '/teacher-student-view';
+export const TEACHER_STUDENT_VIEW   = '/teacher-student-view/:id';

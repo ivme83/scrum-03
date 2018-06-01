@@ -3,19 +3,15 @@ import React from "react";
 import {
   Modal,
   ModalBackground,
-  ModalContent,
-  ModalClose,
   ModalCard,
   ModalCardHeader,
   ModalCardTitle,
   Delete,
   ModalCardBody,
   ModalCardFooter,
-  Button,
   Tag
 } from "bloomer";
 import { Link } from "react-router-dom";
-import * as routes from "../../constants/routes";
 
 const ClassModal = props => {
   // const {_id, name, class_code, students } = props.classData;
@@ -31,10 +27,10 @@ const ClassModal = props => {
         <ModalCardBody>
           <ul>
             {props.classInfo.map(studentInfo => (
-              <li>
+              <li key={studentInfo.user._id}>
                 {studentInfo.user.username} has {studentInfo.projects.length}{" "}projects.
                 <Tag>
-                  <Link to={routes.TEACHER_STUDENT_VIEW} >View Student</Link>
+                  <Link to={`/teacher-student-view/`+studentInfo.user._id} >View Student</Link>
                 </Tag>
               </li>
             ))}

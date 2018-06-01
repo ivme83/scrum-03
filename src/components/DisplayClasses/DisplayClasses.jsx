@@ -20,11 +20,11 @@ class DisplayClasses extends Component {
                 classList = results.data.classes;
                 // console.log(results);
                 this.setState({ classList });
-            })
-            .catch(err => {
-                classList = [];
-                this.setState({ classList });
-            });
+                })
+                .catch(err => {
+                    classList = [];
+                    this.setState({ classList });
+                });
     }
 
     deleteClicked(id) {
