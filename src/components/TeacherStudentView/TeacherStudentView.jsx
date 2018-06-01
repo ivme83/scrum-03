@@ -2,22 +2,19 @@ import React, { Component } from "react";
 import withAuthorization from "../withAuthorization";
 import api from "../../utils/api";
 import {
+  Icon,
+  Card,
+  CardHeader,
+  CardHeaderTitle,
+  CardHeaderIcon,
+  CardFooter,
+  CardFooterItem,
+  CardContent,
   Panel,
   PanelHeading,
-  Control,
-  Input,
-  Icon,
-  PanelBlock,
-  PanelIcon,
-  Button,
-  Checkbox,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownContent,
-  DropdownDivider,
-  DropdownItem
+  PanelBlock
 } from "bloomer";
+import "./TeacherStudentView.css";
 
 class TeacherStudentView extends Component {
   constructor(props) {
@@ -43,86 +40,45 @@ class TeacherStudentView extends Component {
       });
   }
 
-  toggleClass() {
-    this.setState({ classDropdown: !this.state.classDropdown });
-  }
-
   toggleProject() {
     this.setState({ projectDropdown: !this.state.projectDropdown });
+  }
+
+  toggleClass() {
+    this.setState({ classDropdown: !this.state.classDropdown });
   }
 
   whatToRender() {
     if (this.state.studentInfo) {
       const { email, role, username } = this.state.studentInfo.user;
       const { classes, projects } = this.state.studentInfo;
+      const mailtoStr = "mailto:" + email;
 
       return (
-        <Panel>
-          <PanelHeading>{username}</PanelHeading>
-          <PanelBlock>
-            <Dropdown isActive={this.state.classDropdown}>
-              <DropdownTrigger>
-                <Button
-                  isOutlined
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                  onClick={() => this.toggleClass()}
-                >
-                  <span>Classes</span>
-                  <Icon icon="angle-down" isSize="small" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownContent>
-                  {classes.map(eachClass => (
-                    <DropdownItem>{eachClass.name}</DropdownItem>
-                  ))}
-                </DropdownContent>
-              </DropdownMenu>
-            </Dropdown>
-            <Dropdown isActive={this.state.projectDropdown}>
-              <DropdownTrigger>
-                <Button
-                  isOutlined
-                  aria-haspopup="true"
-                  aria-controls="dropdown-menu"
-                  onClick={() => this.toggleProject()}
-                >
-                  <span>Projects</span>
-                  <Icon icon="angle-down" isSize="small" />
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownContent>
-                  {projects.map(eachProject => (
-                    <DropdownItem>{eachProject.name}</DropdownItem>
-                  ))}
-                </DropdownContent>
-              </DropdownMenu>
-            </Dropdown>
-          </PanelBlock>
-          <PanelBlock>
-            <PanelIcon className="fa fa-code-fork" />
-            RxJS
-          </PanelBlock>
-          <PanelBlock>
-            <PanelIcon className="fa fa-code-fork" />
-            Webpack
-          </PanelBlock>
-          <PanelBlock>
-            <PanelIcon className="fa fa-code-fork" />
-            Typescript
-          </PanelBlock>
-          <PanelBlock tag="label">
-            <Checkbox> Remember me</Checkbox>
-          </PanelBlock>
-          <PanelBlock>
-            <Button isOutlined isFullWidth isColor="primary">
-              {" "}
-              Reset all filters
-            </Button>
-          </PanelBlock>
-        </Panel>
+        <div className="cardContainer">
+          <Card>
+            <CardHeader>
+              <CardHeaderTitle>{username}</CardHeaderTitle>
+              <CardHeaderIcon>
+                <Icon className="fa fa-user" />
+              </CardHeaderIcon>
+            </CardHeader>
+            <CardContent>
+              <a href={mailtoStr}>{email}</a>
+
+            </CardContent>
+            <CardFooter>
+              <CardFooterItem onClick={() => this.toggleClass()}>
+                Classes
+              </CardFooterItem>
+              <CardFooterItem onClick={() => this.toggleProject()}>
+                Projects
+              </CardFooterItem>
+            </CardFooter>
+          </Card>
+          {this.state.projectDropdown ? <ProjectDropdownPanel projects={projects} /> : <div />}
+          {this.state.classDropdown ? <ClassDropdownPanel classes={classes}/> : <div />}
+        </div>
       );
     } else {
       return <h1>Please Wait</h1>;
@@ -133,6 +89,20 @@ class TeacherStudentView extends Component {
     return this.whatToRender();
   }
 }
+
+const ClassDropdownPanel = (props) => (
+  <Panel>
+    <PanelHeading>Classes</PanelHeading>
+    {props.classes.map(eachClass => <PanelBlock>{eachClass.name}</PanelBlock>)}
+  </Panel>
+);
+
+const ProjectDropdownPanel = (props) => (
+  <Panel>
+    <PanelHeading>Projects</PanelHeading>
+    {props.projects.map(eachProject => <PanelBlock>{eachProject.name}</PanelBlock>)}
+  </Panel>
+);
 
 const authCondition = authUser => !!authUser && authUser.role === "teacher";
 

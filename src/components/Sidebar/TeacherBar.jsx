@@ -16,7 +16,7 @@ const TeacherBar = () => {
           <Link to={routes.ACCOUNT}>Manage Account</Link>
         </li>
         <li>
-          <Link to={routes.TEACHER_CLASS}>Create Class</Link>
+          <Link to={routes.TEACHER_CLASS}>Manage Classes</Link>
         </li>
       </MenuList>
     </Menu>

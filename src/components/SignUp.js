@@ -135,7 +135,7 @@ class SignUpForm extends Component {
               }
             />
             <Icon isSize="small" isAlign="left">
-              <span className="fa fa-user" aria-hidden="true" />
+              <span className="fa fa-at" aria-hidden="true" />
             </Icon>
           </Control>
         </Field>
