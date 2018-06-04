@@ -1,6 +1,15 @@
-.main-grid {
+.user-grid {
   display: grid;
   grid-template: auto / 350px 1fr;
+  grid-gap: 0px;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.splash-grid {
+  display: grid;
+  grid-template: auto / auto;
   grid-gap: 0px;
 
   width: 100vw;

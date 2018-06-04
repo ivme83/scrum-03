@@ -3,7 +3,6 @@ import {
   Navbar,
   NavbarBrand,
   NavbarItem,
-  Icon,
   NavbarBurger,
   NavbarMenu,
   NavbarStart,
@@ -51,8 +50,11 @@ class NavigationAuth extends React.Component {
       >
         <NavbarBrand>
           <NavbarItem>
-            <Icon className="fa fa-adjust fa-lg" />
-            <span>Project</span>
+            <div className="logo">
+              <span className="pb">
+                {"{"}pb{"}"}
+              </span>HARMONY
+            </div>
           </NavbarItem>
           <NavbarBurger
             isActive={this.state.isActive}
@@ -80,7 +82,7 @@ class NavigationAuth extends React.Component {
           </NavbarStart>
           <NavbarEnd>
             <NavbarItem>
-              <Button onClick={() => auth.doSignOut()}>Sign Out</Button>
+              <Button className="nav-btn" onClick={() => auth.doSignOut()}>Sign Out</Button>
             </NavbarItem>
           </NavbarEnd>
         </NavbarMenu>
@@ -114,8 +116,11 @@ class NavigationNonAuth extends React.Component {
       >
         <NavbarBrand>
           <NavbarItem>
-            <Icon className="fa fa-adjust fa-lg" />
-            <span>Project</span>
+            <div className="logo">
+              <span className="pb">
+                {"{"}pb{"}"}
+              </span>HARMONY
+            </div>
           </NavbarItem>
           <NavbarBurger
             isActive={this.state.isActive}
@@ -125,7 +130,9 @@ class NavigationNonAuth extends React.Component {
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
           <NavbarEnd>
             <NavbarItem>
-              <Button><Link to={routes.SIGN_IN}>Sign In</Link></Button>
+              <Button className="nav-btn">
+                <Link to={routes.SIGN_IN}>Sign In</Link>
+              </Button>
             </NavbarItem>
           </NavbarEnd>
         </NavbarMenu>
