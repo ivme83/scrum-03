@@ -5,6 +5,7 @@ import AuthUserContext from "../AuthUserContext";
 import DisplayProjects from '../DisplayProjects';
 import CreateProject from '../CreateProject';
 import './ProjectMenu.css';
+import AddProject from "../AddProject";
 
 const ProjectMenu = () => (
     <div className="project-menu">
@@ -13,6 +14,7 @@ const ProjectMenu = () => (
                 <DisplayProjects userID={authUser.uid} />
             )}
         </AuthUserContext.Consumer>
+        <AddProject />
         <CreateProject />
     </div>
 )

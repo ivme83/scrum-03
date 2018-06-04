@@ -42,7 +42,7 @@ export default {
       project_code: project_code
     };
 
-    return axios.post(hostname + "/api/project/addProject", projectData);
+    return axios.post(hostname + "/api/project/createProject", projectData);
   },
 
   getProjects: function(id) {
@@ -60,6 +60,15 @@ export default {
     };
 
     return axios.post(hostname + "/api/class/addClass", addClassData);
+  },
+
+  doAddProject: function (student_id, project_code) {
+    let addProjectData = {
+      fbuid: student_id,
+      project_code: project_code
+    };
+
+    return axios.post(hostname + "/api/project/addProject", addProjectData);
   },
 
   getTeacherClasses: function(id) {

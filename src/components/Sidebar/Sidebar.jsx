@@ -9,7 +9,7 @@ const Sidebar = () =>
   <AuthUserContext.Consumer>
     {authUser => {
       if (authUser !== null) {
-        return(authUser.role === "teacher" ? <TeacherBar /> : <StudentBar />);
+        return(authUser.role === "teacher" ? <TeacherBar userId={authUser.uid} /> : <StudentBar userId={authUser.uid} />);
       } else {
         return(<GeneralBar />);
       }

@@ -4,7 +4,7 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import * as routes from "../../constants/routes";
 
-const TeacherBar = () => {
+const TeacherBar = (props) => {
   return (
     <Menu className="sidebar">
       <MenuLabel>Teacher</MenuLabel>
@@ -15,8 +15,14 @@ const TeacherBar = () => {
         <li>
           <Link to={routes.ACCOUNT}>Manage Account</Link>
         </li>
+      </MenuList>
+      <MenuLabel>Manage Classes</MenuLabel>
+      <MenuList>
         <li>
           <Link to={routes.TEACHER_CLASS}>Manage Classes</Link>
+        </li>
+        <li>
+          <Link to={`/teacher-classes/` + props.userId}>View Classes</Link>
         </li>
       </MenuList>
     </Menu>

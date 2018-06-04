@@ -32,7 +32,6 @@ class TeacherStudentView extends Component {
       .getStudent(this.props.match.params.id)
       .then(results => {
         let studentInfo = results.data;
-        console.log(studentInfo);
         this.setState({ studentInfo });
       })
       .catch(err => {
@@ -50,7 +49,7 @@ class TeacherStudentView extends Component {
 
   whatToRender() {
     if (this.state.studentInfo) {
-      const { email, role, username } = this.state.studentInfo.user;
+      const { email, username } = this.state.studentInfo.user;
       const { classes, projects } = this.state.studentInfo;
       const mailtoStr = "mailto:" + email;
 
@@ -65,7 +64,6 @@ class TeacherStudentView extends Component {
             </CardHeader>
             <CardContent>
               <a href={mailtoStr}>{email}</a>
-
             </CardContent>
             <CardFooter>
               <CardFooterItem onClick={() => this.toggleClass()}>
@@ -76,8 +74,16 @@ class TeacherStudentView extends Component {
               </CardFooterItem>
             </CardFooter>
           </Card>
-          {this.state.projectDropdown ? <ProjectDropdownPanel projects={projects} /> : <div />}
-          {this.state.classDropdown ? <ClassDropdownPanel classes={classes}/> : <div />}
+          {this.state.projectDropdown ? (
+            <ProjectDropdownPanel projects={projects} />
+          ) : (
+            <div />
+          )}
+          {this.state.classDropdown ? (
+            <ClassDropdownPanel classes={classes} />
+          ) : (
+            <div />
+          )}
         </div>
       );
     } else {
@@ -90,17 +96,19 @@ class TeacherStudentView extends Component {
   }
 }
 
-const ClassDropdownPanel = (props) => (
+const ClassDropdownPanel = props => (
   <Panel>
     <PanelHeading>Classes</PanelHeading>
     {props.classes.map(eachClass => <PanelBlock>{eachClass.name}</PanelBlock>)}
   </Panel>
 );
 
-const ProjectDropdownPanel = (props) => (
+const ProjectDropdownPanel = props => (
   <Panel>
     <PanelHeading>Projects</PanelHeading>
-    {props.projects.map(eachProject => <PanelBlock>{eachProject.name}</PanelBlock>)}
+    {props.projects.map(eachProject => (
+      <PanelBlock>{eachProject.name}</PanelBlock>
+    ))}
   </Panel>
 );
 

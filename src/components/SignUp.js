@@ -1,42 +1,32 @@
-import React, { Component }     from 'react';
+import React, { Component } from "react";
 
-import { 
-  Link,
-  withRouter,
-}                               from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
-import {
-  Button,
-  Control,
-  Field,
-  Icon,
-  Input,
-  Label,
-  Radio,
-}                               from "bloomer";
+import { Button, Control, Field, Icon, Input, Label, Radio } from "bloomer";
 
-import { auth }                 from '../firebase';
-import api                      from '../utils/api';
+import { auth } from "../firebase";
+import api from "../utils/api";
 
-import * as routes              from '../constants/routes';
+import * as routes from "../constants/routes";
 
-const SignUpPage = ({ history }) =>
+const SignUpPage = ({ history }) => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm history={history} />
   </div>
+);
 
 const INITIAL_STATE = {
-  username: '',
-  email: '',
-  role: '',
-  passwordOne: '',
-  passwordTwo: '',
-  error: null,
+  username: "",
+  email: "",
+  role: "",
+  passwordOne: "",
+  passwordTwo: "",
+  error: null
 };
 
 const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
+  [propertyName]: value
 });
 
 class SignUpForm extends Component {
@@ -46,43 +36,37 @@ class SignUpForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
-    const {
-      username,
-      email,
-      role,
-      passwordOne,
-    } = this.state;
+  onSubmit = event => {
+    const { username, email, role, passwordOne } = this.state;
 
-    const {
-      history,
-    } = this.props;
+    const { history } = this.props;
 
-    auth.doCreateUserWithEmailAndPassword(email, passwordOne)
+    auth
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        // Create a user in your own accessible firebase Database too
-        api.doCreateUser(authUser.user.uid, username, email, role)
+        api
+          .doCreateUser(authUser.user.uid, username, email, role)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }));
+            console.log("hello");
             history.push(routes.HOME);
           })
           .catch(error => {
-            this.setState(byPropKey('error', error));
+            this.setState(byPropKey("error", error));
           });
-
       })
       .catch(error => {
-        this.setState(byPropKey('error', error));
+        this.setState(byPropKey("error", error));
       });
 
     event.preventDefault();
-  }
+  };
 
-  handleOptionChange = (changeEvent) => {
+  handleOptionChange = changeEvent => {
     this.setState({
       role: changeEvent.target.value
     });
-  }
+  };
 
   render() {
     const {
@@ -91,15 +75,15 @@ class SignUpForm extends Component {
       role,
       passwordOne,
       passwordTwo,
-      error,
+      error
     } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
-      passwordOne === '' ||
-      email === '' ||
-      username === '' ||
-      role === '';
+      passwordOne === "" ||
+      email === "" ||
+      username === "" ||
+      role === "";
 
     return (
       <form onSubmit={this.onSubmit}>
@@ -141,8 +125,22 @@ class SignUpForm extends Component {
         </Field>
         <Field>
           <Control>
-            <Radio name="userRole" value="teacher" checked={this.state.role === 'teacher'} onChange={this.handleOptionChange} >Teacher</Radio>
-            <Radio name="userRole" value="student" checked={this.state.role === 'student'} onChange={this.handleOptionChange} >Student</Radio>
+            <Radio
+              name="userRole"
+              value="teacher"
+              checked={this.state.role === "teacher"}
+              onChange={this.handleOptionChange}
+            >
+              Teacher
+            </Radio>
+            <Radio
+              name="userRole"
+              value="student"
+              checked={this.state.role === "student"}
+              onChange={this.handleOptionChange}
+            >
+              Student
+            </Radio>
           </Control>
         </Field>
         <Field>
@@ -189,22 +187,18 @@ class SignUpForm extends Component {
           </Control>
         </Field>
 
-        { error && <p>{error.message}</p> }
+        {error && <p>{error.message}</p>}
       </form>
     );
   }
 }
 
-const SignUpLink = () =>
+const SignUpLink = () => (
   <p>
-    Don't have an account?
-    {' '}
-    <Link to={routes.SIGN_UP}>Sign Up</Link>
+    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>
+);
 
 export default withRouter(SignUpPage);
 
-export {
-  SignUpForm,
-  SignUpLink,
-};
+export { SignUpForm, SignUpLink };

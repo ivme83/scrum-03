@@ -1,8 +1,6 @@
 import React              from 'react';
 import AuthUserContext    from '../AuthUserContext';
 import withAuthorization  from '../withAuthorization';
-import { Link }           from "react-router-dom";
-import * as routes        from "../../constants/routes";
 
 const Home = () =>
   <AuthUserContext.Consumer>
@@ -11,18 +9,16 @@ const Home = () =>
 
 const TeacherMenu = () => {
   return (
-    <p><Link to={routes.TEACHER_CLASS}>Create Class</Link></p>
+    <p>This is the teacher homepage.</p>
   );
 };
 
 const StudentMenu = () => {
   return (
-    <p><Link to={routes.STUDENT_CLASS}>Add a Class</Link></p>
+    <p>This is the student homepage.</p>
   );
 };
 
 const authCondition = (authUser) => !!authUser;
 
 export default withAuthorization(authCondition)(Home);
-
-// "proxy": "http://localhost:3001/"

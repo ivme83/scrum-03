@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AuthUserContext from "../AuthUserContext";
+import withAuthorization from "../withAuthorization";
 import api from '../../utils/api';
 import ProjectLevel from '../ProjectLevel';
 
@@ -12,10 +13,12 @@ class DisplayProjects extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let projectList = [];
 
-        api.getProjects(this.props.userID)
+        let student_id = this.props.match.params.id || this.props.userID;
+
+        api.getProjects(student_id)
             .then(results => {
                 projectList = results.data.projects;
                 this.setState({ projectList });
@@ -45,4 +48,6 @@ class DisplayProjects extends Component {
     }
 }
 
-export default DisplayProjects;
+const authCondition = authUser => !!authUser && authUser.role === "student";
+
+export default withAuthorization(authCondition)(DisplayProjects);
