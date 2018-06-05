@@ -1,0 +1,19 @@
+.page-container {
+    padding: 20px;
+    height: 100vh;
+}
+
+.form-btn {
+    background-color: black;
+    color: lightcyan;
+}
+
+.form-btn:disabled {
+    background-color: black;
+    color: lightcyan;
+}
+
+.form-btn {
+    background-color: black;
+    color: cyan;
+}

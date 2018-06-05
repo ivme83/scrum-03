@@ -2,17 +2,29 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import { Button, Control, Field, Icon, Input, Label } from "bloomer";
+import './SignIn.css';
 
-import { SignUpLink } from "./SignUp";
-import { PasswordForgetLink } from "./PasswordForget";
-import { auth } from "../firebase";
-import * as routes from "../constants/routes";
+import { PasswordForgetLink } from "../PasswordForget";
+import { auth } from "../../firebase";
+import * as routes from "../../constants/routes";
 
-const SignInPage = ({ history }) => (
-  <div>
-    <SignInForm history={history} />
-    <PasswordForgetLink />
-    <SignUpLink />
+import { Splash3 } from '../Images';
+
+const splashStyle = {
+  backgroundImage: `url(${Splash3})`,
+  backgroundSize: "100vw",
+  backgroundRepeat: "no-repeat"
+};
+
+const SignIn = ({ history }) => (
+  <div style={splashStyle}>
+    <div className="container">
+      <div className="sign-in">
+        <SignInForm history={history} />
+        <PasswordForgetLink />
+        <SignUpLink />
+      </div>
+    </div>
   </div>
 );
 
@@ -126,12 +138,10 @@ class SignInForm extends Component {
   }
 }
 
-const SignInLink = () => (
+const SignUpLink = () => (
   <p>
-    You are not currently signed in. <Link to={routes.SIGN_IN}>Sign In</Link>
+    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>
 );
 
-export default withRouter(SignInPage);
-
-export { SignInForm, SignInLink };
+export default withRouter(SignIn);

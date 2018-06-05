@@ -11,7 +11,16 @@ import {
   ModalCardFooter,
   Tag
 } from "bloomer";
+import './ClassModal.css';
+
+import { Texture2 } from '../Images';
+
 import { Link } from "react-router-dom";
+
+const bgTexture = {
+  backgroundImage: `url(${Texture2})`,
+  backgroundSize: '30%'
+};
 
 const ClassModal = props => {
   // const {_id, name, class_code, students } = props.classData;
@@ -24,12 +33,12 @@ const ClassModal = props => {
           <ModalCardTitle>Student List</ModalCardTitle>
           <Delete onClick={props.launchModal} />
         </ModalCardHeader>
-        <ModalCardBody>
+        <ModalCardBody className="modal-body" style={bgTexture}>
           <ul>
             {props.classInfo.map(studentInfo => (
               <li key={studentInfo.user._id}>
                 {studentInfo.user.username} has {studentInfo.projects.length}{" "}projects.
-                <Tag>
+                <Tag isColor='info'>
                   <Link to={`/teacher-student-view/`+studentInfo.user._id} >View Student</Link>
                 </Tag>
               </li>

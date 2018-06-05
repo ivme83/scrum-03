@@ -3,6 +3,13 @@ import AuthUserContext from "../AuthUserContext";
 import withAuthorization from "../withAuthorization";
 import api from '../../utils/api';
 import ProjectLevel from '../ProjectLevel';
+import { Texture1 } from "../Images";
+import './DisplayProjects.css';
+
+const bgTexture = {
+    backgroundImage: `url(${Texture1})`,
+    backgroundSize: '30%'
+};
 
 class DisplayProjects extends Component {
     constructor(props) {
@@ -37,12 +44,14 @@ class DisplayProjects extends Component {
         const { projectList } = this.state;
 
         return (
-            <div>
-                <AuthUserContext.Consumer>
-                    {
-                        authUser => projectList.map((eachProject) => <ProjectLevel key={eachProject.project_code} projectData={eachProject} deleteClicked={this.deleteClicked} role={authUser.role} />)
-                    }
-                </AuthUserContext.Consumer>
+            <div style={bgTexture} >
+                <div className="page-container">
+                    <AuthUserContext.Consumer>
+                        {
+                            authUser => projectList.map((eachProject) => <ProjectLevel key={eachProject.project_code} projectData={eachProject} deleteClicked={this.deleteClicked} role={authUser.role} />)
+                        }
+                    </AuthUserContext.Consumer>
+                </div>
             </div>
         );
     }

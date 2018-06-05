@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in {
+    display: inline-block;
+    margin-top: 200px;
+    padding: 20px;
+    background-color: lightcyan;
+    border-radius: 25px;
+}

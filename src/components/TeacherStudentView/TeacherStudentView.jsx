@@ -14,7 +14,14 @@ import {
   PanelHeading,
   PanelBlock
 } from "bloomer";
+
+import { Texture1 } from "../Images";
 import "./TeacherStudentView.css";
+
+const bgTexture = {
+  backgroundImage: `url(${Texture1})`,
+  backgroundSize: '30%'
+};
 
 class TeacherStudentView extends Component {
   constructor(props) {
@@ -54,6 +61,7 @@ class TeacherStudentView extends Component {
       const mailtoStr = "mailto:" + email;
 
       return (
+        <div className="page-container" style={bgTexture} >
         <div className="cardContainer">
           <Card>
             <CardHeader>
@@ -63,7 +71,7 @@ class TeacherStudentView extends Component {
               </CardHeaderIcon>
             </CardHeader>
             <CardContent>
-              <a href={mailtoStr}>{email}</a>
+              <a href={mailtoStr}><Icon className="fa fa-envelope" />{email}</a>
             </CardContent>
             <CardFooter>
               <CardFooterItem onClick={() => this.toggleClass()}>
@@ -85,6 +93,7 @@ class TeacherStudentView extends Component {
             <div />
           )}
         </div>
+        </div>
       );
     } else {
       return <h1>Please Wait</h1>;
@@ -97,17 +106,17 @@ class TeacherStudentView extends Component {
 }
 
 const ClassDropdownPanel = props => (
-  <Panel>
+  <Panel className="panel-bg" >
     <PanelHeading>Classes</PanelHeading>
-    {props.classes.map(eachClass => <PanelBlock>{eachClass.name}</PanelBlock>)}
+    {props.classes.map(eachClass => <PanelBlock key={eachClass._id} >{eachClass.name}</PanelBlock>)}
   </Panel>
 );
 
 const ProjectDropdownPanel = props => (
-  <Panel>
+  <Panel className="panel-bg" >
     <PanelHeading>Projects</PanelHeading>
     {props.projects.map(eachProject => (
-      <PanelBlock>{eachProject.name}</PanelBlock>
+      <PanelBlock key={eachProject._id} >{eachProject.name}</PanelBlock>
     ))}
   </Panel>
 );

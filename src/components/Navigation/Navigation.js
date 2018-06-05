@@ -5,10 +5,6 @@ import {
   NavbarItem,
   NavbarBurger,
   NavbarMenu,
-  NavbarStart,
-  NavbarLink,
-  NavbarDropdown,
-  NavbarDivider,
   NavbarEnd,
   Button
 } from "bloomer";
@@ -44,45 +40,25 @@ class NavigationAuth extends React.Component {
 
   render() {
     return (
-      <Navbar
-        className="navbar"
-        style={{ border: "solid 1px #00D1B2", margin: "0" }}
-      >
+      <Navbar className="navbar" style={{ border: "solid 1px #00D1B2", margin: "0" }}>
         <NavbarBrand>
           <NavbarItem>
-            <div className="logo">
-              <span className="pb">
-                {"{"}pb{"}"}
-              </span>HARMONY
-            </div>
+            <Link to={routes.HOME}>
+              <div className="logo">
+                <span className="pb">
+                  {"{"}pb{"}"}
+                </span>HARMONY
+              </div>
+            </Link>
           </NavbarItem>
-          <NavbarBurger
-            isActive={this.state.isActive}
-            onClick={this.onClickNav}
-          />
+          <NavbarBurger isActive={this.state.isActive} onClick={this.onClickNav} />
         </NavbarBrand>
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
-          <NavbarStart>
-            <NavbarItem>
-              <Link to={routes.HOME}>Home</Link>
-            </NavbarItem>
-            <NavbarItem hasDropdown isHoverable>
-              <NavbarLink href="#/documentation">Documentation</NavbarLink>
-              <NavbarDropdown>
-                <NavbarItem>
-                  <Link to={routes.HOME}>Home</Link>
-                </NavbarItem>
-                <NavbarItem>
-                  <Link to={routes.ACCOUNT}>Account</Link>
-                </NavbarItem>
-                <NavbarDivider />
-                <NavbarItem href="#/">Two A</NavbarItem>
-              </NavbarDropdown>
-            </NavbarItem>
-          </NavbarStart>
           <NavbarEnd>
             <NavbarItem>
-              <Button className="nav-btn" onClick={() => auth.doSignOut()}>Sign Out</Button>
+              <Button className="nav-btn" onClick={() => auth.doSignOut()}>
+                Sign Out
+              </Button>
             </NavbarItem>
           </NavbarEnd>
         </NavbarMenu>
@@ -110,17 +86,16 @@ class NavigationNonAuth extends React.Component {
 
   render() {
     return (
-      <Navbar
-        className="navbar"
-        style={{ gridArea: "b", border: "solid 1px #00D1B2", margin: "0" }}
-      >
+      <Navbar className="navbar" style={{ gridArea: "b", border: "solid 1px #00D1B2", margin: "0" }} >
         <NavbarBrand>
           <NavbarItem>
-            <div className="logo">
-              <span className="pb">
-                {"{"}pb{"}"}
-              </span>HARMONY
-            </div>
+            <Link to={routes.HOME}>
+              <div className="logo">
+                <span className="pb">
+                  {"{"}pb{"}"}
+                </span>HARMONY
+              </div>
+            </Link>
           </NavbarItem>
           <NavbarBurger
             isActive={this.state.isActive}
@@ -132,6 +107,11 @@ class NavigationNonAuth extends React.Component {
             <NavbarItem>
               <Button className="nav-btn">
                 <Link to={routes.SIGN_IN}>Sign In</Link>
+              </Button>
+            </NavbarItem>
+            <NavbarItem>
+              <Button className="nav-btn">
+                <Link to={routes.SIGN_UP}>Sign Up</Link>
               </Button>
             </NavbarItem>
           </NavbarEnd>

@@ -1,15 +1,28 @@
 import React, { Component } from "react";
 
 import { Button, Control, Field, Input, Label, TextArea } from "bloomer";
+import './CreateProject.css';
+
+import { Texture1 } from "../Images";
 
 import api from "../../utils/api";
 
-// import withAuthorization from "../withAuthorization";
 import AuthUserContext from "../AuthUserContext";
+
+const bgTexture = {
+  backgroundImage: `url(${Texture1})`,
+  backgroundSize: '30%'
+};
 
 const CreateProject = ({ authUser }) => (
   <AuthUserContext.Consumer>
-    {authUser => <CreateProjectForm userID={authUser.uid} />}
+    {authUser => (
+      <div style={bgTexture} >
+        <div className="page-container">
+          <CreateProjectForm userID={authUser.uid} />
+        </div>
+      </div>
+    )}
   </AuthUserContext.Consumer>
 );
 
@@ -90,7 +103,7 @@ class CreateProjectForm extends Component {
         </Field>
         <Field>
           <Control>
-            <Button disabled={isInvalid} isColor="primary" type="submit">
+            <Button className="form-btn" disabled={isInvalid} type="submit">
               Create Project
             </Button>
           </Control>

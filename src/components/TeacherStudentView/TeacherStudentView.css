@@ -1,6 +1,16 @@
+.page-container {
+  height: 100vh;
+
+}
+
 .cardContainer {
+  padding-top: 30px;
   width: 50%;
   height: 50%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.panel-bg {
+  background-color: white;
 }

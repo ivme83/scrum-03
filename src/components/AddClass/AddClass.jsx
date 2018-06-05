@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Button, Control, Field, Icon, Input, Label } from "bloomer";
+import { Button, Control, Field, Input, Label } from "bloomer";
 
 import api from "../../utils/api";
 
@@ -58,7 +58,7 @@ class AddClassForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <Field>
-          <Label>Add Class Code</Label>
+          <Label isSize="large" >Add Class Code</Label>
           <Control hasIcons>
             <Input
               isColor="success"
@@ -70,14 +70,11 @@ class AddClassForm extends Component {
                 this.setState(byPropKey("class_code", event.target.value))
               }
             />
-            <Icon isSize="small" isAlign="left">
-              <span className="fa fa-user" aria-hidden="true" />
-            </Icon>
           </Control>
         </Field>
         <Field>
           <Control>
-            <Button disabled={isInvalid} isColor="primary" type="submit">
+            <Button className="form-btn" disabled={isInvalid} type="submit">
               Add Class
             </Button>
           </Control>

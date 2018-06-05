@@ -63,7 +63,7 @@ class TeacherClassLevel extends Component {
         <Box>
           <Level>
             <LevelLeft>
-              <LevelItem onClick={() => this.launchModal(_id, true)}>
+              <LevelItem className="clickable" onClick={() => this.launchModal(_id, true)}>
                 <strong>{name}</strong> has {classSize} students
               </LevelItem>
             </LevelLeft>

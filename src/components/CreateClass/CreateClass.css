@@ -1,0 +1,14 @@
+.form-btn {
+    background-color: black;
+    color: lightcyan;
+}
+
+.form-btn:disabled {
+    background-color: black;
+    color: lightcyan;
+}
+
+.form-btn {
+    background-color: black;
+    color: cyan;
+}

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
-import { Button, Control, Field, Icon, Input, Label } from "bloomer";
+import { Button, Control, Field, Input, Label } from "bloomer";
+import './CreateClass.css';
 
 import api from "../../utils/api";
 
-// import withAuthorization from "../withAuthorization";
 import AuthUserContext from "../AuthUserContext";
+
 
 const CreateClass = ({ authUser }) => (
   <AuthUserContext.Consumer>
@@ -62,7 +63,7 @@ class CreateClassForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <Field>
-          <Label>New Class Name</Label>
+          <Label isSize="large" >New Class Name</Label>
           <Control hasIcons>
             <Input
               isColor="success"
@@ -74,14 +75,11 @@ class CreateClassForm extends Component {
                 this.setState(byPropKey("class_name", event.target.value))
               }
             />
-            <Icon isSize="small" isAlign="left">
-              <span className="fa fa-user" aria-hidden="true" />
-            </Icon>
           </Control>
         </Field>
         <Field>
           <Control>
-            <Button disabled={isInvalid} isColor="primary" type="submit">
+            <Button className="form-btn" disabled={isInvalid} type="submit">
               Create Class
             </Button>
           </Control>

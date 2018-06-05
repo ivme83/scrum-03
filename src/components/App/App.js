@@ -47,7 +47,7 @@ const UserLayout = ({ children, ...rest }) => {
 
 const App = () =>
   <Router>
-    <div>
+    <div className="main-container">
       <Navigation />
         <Route exact path={routes.SPLASH}              component={() => <SplashLayout><SplashPage /></SplashLayout>} />
         <Route exact path={routes.SIGN_UP}              component={() => <SplashLayout><SignUpPage /></SplashLayout>} />

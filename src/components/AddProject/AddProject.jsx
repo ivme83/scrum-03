@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 
-import { Button, Control, Field, Icon, Input, Label } from "bloomer";
+import { Button, Control, Field, Input, Label } from "bloomer";
+import './AddProject.css';
+import { Texture1 } from "../Images";
 
 import api from "../../utils/api";
 
-// import withAuthorization from "../withAuthorization";
 import AuthUserContext from "../AuthUserContext";
+
+const bgTexture = {
+  backgroundImage: `url(${Texture1})`,
+  backgroundSize: '30%'
+};
 
 const AddProject = ({ authUser }) => (
   <AuthUserContext.Consumer>
     {authUser => (
-      <div>
-        <AddProjectForm userID={authUser.uid} />
+      <div style={bgTexture} >
+        <div className="page-container">
+          <AddProjectForm userID={authUser.uid} />
+        </div>
       </div>
     )}
   </AuthUserContext.Consumer>
@@ -70,14 +78,11 @@ class AddProjectForm extends Component {
                 this.setState(byPropKey("project_code", event.target.value))
               }
             />
-            <Icon isSize="small" isAlign="left">
-              <span className="fa fa-user" aria-hidden="true" />
-            </Icon>
           </Control>
         </Field>
         <Field>
           <Control>
-            <Button disabled={isInvalid} isColor="primary" type="submit">
+            <Button className="form-btn" disabled={isInvalid} type="submit">
               Add Project
             </Button>
           </Control>

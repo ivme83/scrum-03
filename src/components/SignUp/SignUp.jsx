@@ -1,18 +1,30 @@
 import React, { Component } from "react";
 
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { Button, Control, Field, Icon, Input, Label, Radio } from "bloomer";
+import './SignUp.css';
 
-import { auth } from "../firebase";
-import api from "../utils/api";
+import { auth } from "../../firebase";
+import api from "../../utils/api";
 
-import * as routes from "../constants/routes";
+import * as routes from "../../constants/routes";
 
-const SignUpPage = ({ history }) => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm history={history} />
+import { Splash3 } from '../Images';
+
+const splashStyle = {
+  backgroundImage: `url(${Splash3})`,
+  backgroundSize: "100vw",
+  backgroundRepeat: "no-repeat"
+};
+
+const SignUp = ({ history }) => (
+  <div style={splashStyle}>
+    <div className="container">
+      <div className="sign-up">
+        <SignUpForm history={history} />
+      </div>
+    </div>
   </div>
 );
 
@@ -193,12 +205,4 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
-  </p>
-);
-
-export default withRouter(SignUpPage);
-
-export { SignUpForm, SignUpLink };
+export default withRouter(SignUp);

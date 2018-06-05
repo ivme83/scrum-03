@@ -1,4 +1,25 @@
 .sidebar {
+    width: auto; /* Set a width if you like */
+    background-color: lightcyan;
+    border-right: solid darkcyan 1px;
+}
 
-    background-color: lightgray;
+.sidebar a {
+    background-color: lightcyan; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+    padding-left: 30px;
+}
+
+.sidebar a:hover {
+    background-color: cyan; /* Dark grey background on mouse-over */
+}
+
+.sidebar a.active {
+    background-color: darkcyan; /* Add a green color to the "active/current" link */
+    color: white;
+    cursor: default;
+    padding-left: 10px;
 }

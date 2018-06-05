@@ -1,8 +1,8 @@
 import React from 'react';
-import Splash from './splash.jpg';
+import { Splash3 } from '../Images';
 
 const splashStyle = {
-  backgroundImage: `url(${Splash})`,
+  backgroundImage: `url(${Splash3})`,
   backgroundSize: "100vw",
   backgroundRepeat: "no-repeat"
 };
