@@ -40,7 +40,7 @@ const UserLayout = ({ children, ...rest }) => {
   return (
     <div className="user-grid">
       <Sidebar />
-      <div>{children}</div>
+      {children}
     </div>
   )
 }

@@ -1,0 +1,22 @@
+.splash-container {
+    margin-top: 350px;
+}
+
+.splash-logo {
+  margin: auto;
+  width: 500px;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 2em;
+
+  border-radius: 10px; /* or 50% */
+
+  background-color: black;
+  color: lightcyan;
+  text-align: center;
+  font-size: 4em;
+}
+
+.splash-logo .pb {
+  color: darkcyan;
+}
