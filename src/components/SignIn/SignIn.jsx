@@ -8,10 +8,10 @@ import { PasswordForgetLink } from "../PasswordForget";
 import { auth } from "../../firebase";
 import * as routes from "../../constants/routes";
 
-import { Splash3 } from '../Images';
+import { Splash4 } from '../Images';
 
 const splashStyle = {
-  backgroundImage: `url(${Splash3})`,
+  backgroundImage: `url(${Splash4})`,
   backgroundSize: "100vw",
   backgroundRepeat: "no-repeat"
 };
