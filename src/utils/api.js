@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // const hostname = "http://localhost:3000";
-// const hostname = "https://glacial-oasis-99575.herokuapp.com";
+const hostname = "https://glacial-oasis-99575.herokuapp.com";
 
-const hostname = process.env.NODE_ENV !== 'production' ?
-  "http://localhost:3000" :
-  "https://glacial-oasis-99575.herokuapp.com"
+// const hostname = process.env.NODE_ENV !== 'production' ?
+//   "http://localhost:3000" :
+//   "https://glacial-oasis-99575.herokuapp.com"
 
 
 export default {
