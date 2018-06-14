@@ -5,6 +5,7 @@ import {
   NavbarItem,
   NavbarBurger,
   NavbarMenu,
+  NavbarStart,
   NavbarEnd,
   Button
 } from "bloomer";
@@ -103,6 +104,9 @@ class NavigationNonAuth extends React.Component {
           />
         </NavbarBrand>
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
+          <NavbarStart>
+            <NavbarItem><Link to={routes.ABOUT}>ABOUT</Link></NavbarItem>
+          </NavbarStart>
           <NavbarEnd>
             <NavbarItem>
               <Button className="nav-btn">

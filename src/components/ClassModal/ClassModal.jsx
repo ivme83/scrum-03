@@ -37,7 +37,7 @@ const ClassModal = props => {
           <ul>
             {props.classInfo.map(studentInfo => (
               <li key={studentInfo.user._id}>
-                {studentInfo.user.username} has {studentInfo.projects.length}{" "}projects.
+                <strong>{studentInfo.user.username}</strong> has {studentInfo.projects.length}{" "}projects.
                 <Tag isColor='info'>
                   <Link to={`/teacher-student-view/`+studentInfo.user._id} >View Student</Link>
                 </Tag>

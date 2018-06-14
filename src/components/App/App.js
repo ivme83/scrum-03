@@ -27,6 +27,7 @@ import AddClass           from '../AddClass';
 import * as routes        from '../../constants/routes';
 
 import withAuthentication from '../withAuthentication';
+import AboutPage from '../AboutPage/AboutPage';
 
 const SplashLayout = ({children, ...rest}) => {
   return (
@@ -49,10 +50,11 @@ const App = () =>
   <Router>
     <div className="main-container">
       <Navigation />
-        <Route exact path={routes.SPLASH}              component={() => <SplashLayout><SplashPage /></SplashLayout>} />
+        <Route exact path={routes.SPLASH}               component={() => <SplashLayout><SplashPage /></SplashLayout>} />
         <Route exact path={routes.SIGN_UP}              component={() => <SplashLayout><SignUpPage /></SplashLayout>} />
         <Route exact path={routes.SIGN_IN}              component={() => <SplashLayout><SignInPage /></SplashLayout>} />
         <Route exact path={routes.PASSWORD_FORGET}      component={() => <SplashLayout><PasswordForgetPage /></SplashLayout>} />
+        <Route exact path={routes.ABOUT}                component={() => <SplashLayout><AboutPage /></SplashLayout>} />
         <Route exact path={routes.HOME}                 component={() => <UserLayout><HomePage /></UserLayout>} />
         <Route exact path={routes.ACCOUNT}              component={() => <UserLayout><AccountPage /></UserLayout>} />
         <Route exact path={routes.TEACHER_CLASS}        component={() => <UserLayout><ClassMenu /></UserLayout>} />
