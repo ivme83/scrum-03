@@ -8,6 +8,7 @@ import {
   LevelItem,
   LevelRight
 } from "bloomer";
+import { Link } from "react-router-dom";
 import './ProjectLevel.css';
 
 const ProjectLevel = props => {
@@ -29,7 +30,7 @@ const TeacherProjectLevel = (props) => {
         <Box>
           <Level>
           <LevelLeft>
-              <LevelItem><strong>{name}</strong></LevelItem>
+              <LevelItem><Link to={`/edit-project/` + _id}><strong>{name}</strong></Link></LevelItem>
           </LevelLeft>
           <LevelRight>
               <LevelItem><strong>Project Code:</strong></LevelItem>
@@ -49,8 +50,8 @@ const StudentProjectLevel = (props) => {
         <Box>
           <Level>
           <LevelLeft>
-              <LevelItem><strong>{name}</strong></LevelItem>
-              <LevelItem>{description}</LevelItem>
+                <LevelItem><Link to={`/edit-project/` + _id}><strong>{name}</strong></Link></LevelItem>
+                <LevelItem>{description}</LevelItem>
           </LevelLeft>
           <LevelRight>
               <LevelItem><strong>Project Code:</strong></LevelItem>

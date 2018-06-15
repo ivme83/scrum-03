@@ -23,6 +23,7 @@ import AddProject         from '../AddProject';
 import CreateProject      from '../CreateProject';
 import DisplayClasses     from '../DisplayClasses';
 import AddClass           from '../AddClass';
+import EditProject        from '../EditProject';
 
 import * as routes        from '../../constants/routes';
 
@@ -67,6 +68,7 @@ const App = () =>
         <Route path="/student-project/:id"              component={() => <UserLayout><DisplayProjects /></UserLayout>} />
         <Route path="/student-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
         <Route path="/teacher-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
+        <Route path="/edit-project/:id"                 component={() => <UserLayout><EditProject /></UserLayout>} />
     </div>
   </Router>
 

@@ -3,25 +3,23 @@ import axios from "axios";
 // const hostname = "http://localhost:3000";
 const hostname = "https://glacial-oasis-99575.herokuapp.com";
 
-
 export default {
-
   doCreateUser: function(id, username, email, role) {
-      let userData = {
-        fbuid: id,
-        username: username,
-        email: email,
-        role: role
-      };
-    return axios.post(hostname+"/api/user", userData);
+    let userData = {
+      fbuid: id,
+      username: username,
+      email: email,
+      role: role
+    };
+    return axios.post(hostname + "/api/user", userData);
   },
 
   doFindOneUser: function(id) {
     let userData = {
       fbuid: id
     };
-    
-    return axios.post(hostname+"/api/user/getUser", userData);
+
+    return axios.post(hostname + "/api/user/getUser", userData);
   },
 
   doCreateClass: function(teacher_id, class_name, classCode) {
@@ -31,10 +29,15 @@ export default {
       class_code: classCode
     };
 
-    return axios.post(hostname+"/api/class", classData);
+    return axios.post(hostname + "/api/class", classData);
   },
 
-  doCreateProject: function(student_id, project_name, description, project_code) {
+  doCreateProject: function(
+    student_id,
+    project_name,
+    description,
+    project_code
+  ) {
     let projectData = {
       student_id: student_id,
       project_name: project_name,
@@ -50,10 +53,18 @@ export default {
       fbuid: id
     };
 
-    return axios.post(hostname+"/api/project/getProjects", userData);
+    return axios.post(hostname + "/api/project/getProjects", userData);
   },
 
-  doAddClass: function (student_id, class_code) {
+  getSingleProject: function(id) {
+    let projectData = {
+      _id: id
+    };
+
+    return axios.post(hostname + "/api/project/getSingleProject", projectData);
+  },
+
+  doAddClass: function(student_id, class_code) {
     let addClassData = {
       fbuid: student_id,
       class_code: class_code
@@ -62,7 +73,7 @@ export default {
     return axios.post(hostname + "/api/class/addClass", addClassData);
   },
 
-  doAddProject: function (student_id, project_code) {
+  doAddProject: function(student_id, project_code) {
     let addProjectData = {
       fbuid: student_id,
       project_code: project_code
@@ -75,8 +86,8 @@ export default {
     let userData = {
       fbuid: id
     };
-    
-    return axios.post(hostname+"/api/class/getTeacherClasses", userData);
+
+    return axios.post(hostname + "/api/class/getTeacherClasses", userData);
   },
 
   getStudentsFromClass: function(class_id) {
@@ -84,7 +95,10 @@ export default {
       class_id: class_id
     };
 
-    return axios.post(hostname + "/api/class/getStudentsFromClass", teacherClassData);
+    return axios.post(
+      hostname + "/api/class/getStudentsFromClass",
+      teacherClassData
+    );
   },
 
   getStudent(id) {
@@ -92,7 +106,25 @@ export default {
       user: id
     };
 
-    return axios.post(hostname + "/api/user/getStudent", studentData)
-  }
+    return axios.post(hostname + "/api/user/getStudent", studentData);
+  },
 
+  getTasks(id) {
+    let projectData = {
+      _id: id
+    };
+
+    return axios.post(hostname + "/api/project/getTasks", projectData);
+  },
+
+  addTask(_id, name, description, date) {
+    let taskData = {
+      _id: _id,
+      name: name,
+      description: description,
+      due_date: date
+    };
+
+    return axios.post(hostname + "/api/project/addTask", taskData);
+  }
 };
