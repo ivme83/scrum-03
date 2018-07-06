@@ -83,7 +83,7 @@ class SignInForm extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <form onSubmit={this.onSubmit} style={{ width: "600px" }}>
+      <form onSubmit={this.onSubmit}>
         <Field>
           <Label>Email</Label>
           <Control hasIcons>

@@ -17,3 +17,7 @@
   position: absolute;
   top: 0;
 }
+
+.main-container {
+  width: 100%;
+}

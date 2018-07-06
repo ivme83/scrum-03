@@ -11,3 +11,7 @@
     background-color: lightcyan;
     border-radius: 25px;
 }
+
+.anInput {
+    width: 100px;
+}
