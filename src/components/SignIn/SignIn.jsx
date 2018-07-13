@@ -12,8 +12,11 @@ import { Splash4 } from '../Images';
 
 const splashStyle = {
   backgroundImage: `url(${Splash4})`,
-  backgroundSize: "100vw",
-  backgroundRepeat: "no-repeat"
+  backgroundPosition: "center center",
+  backgroundSize: "cover",
+  backgroundAttachment: "fixed",
+  backgroundRepeat: "no-repeat",
+  backgroundColor: "dark cyan"
 };
 
 const SignIn = ({ history }) => (
