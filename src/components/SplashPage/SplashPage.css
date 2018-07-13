@@ -1,5 +1,7 @@
-.splash-container {
-    margin-top: 350px;
+.splash-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .splash-logo {
