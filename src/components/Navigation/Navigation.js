@@ -18,11 +18,11 @@ import * as routes from "../../constants/routes";
 
 const Navigation = () => (
   <AuthUserContext.Consumer>
-    {authUser => (authUser ? <NavigationAuth /> : <NavigationNonAuth />)}
+    {authUser => (authUser ? <NavAuth /> : <NavNonAuth />)}
   </AuthUserContext.Consumer>
 );
 
-class NavigationAuth extends React.Component {
+class NavAuth extends React.Component {
   constructor(props) {
     super(props);
 
@@ -68,7 +68,7 @@ class NavigationAuth extends React.Component {
   }
 }
 
-class NavigationNonAuth extends React.Component {
+class NavNonAuth extends React.Component {
   constructor(props) {
     super(props);
 
