@@ -105,7 +105,7 @@ class NavigationNonAuth extends React.Component {
         </NavbarBrand>
         <NavbarMenu isActive={this.state.isActive} onClick={this.onClickNav}>
           <NavbarStart>
-            <NavbarItem><Link to={routes.ABOUT}>ABOUT</Link></NavbarItem>
+            {/* Nothing here yet */}
           </NavbarStart>
           <NavbarEnd>
             <NavbarItem>

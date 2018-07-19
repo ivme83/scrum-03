@@ -1,9 +1,10 @@
 import React from "react";
 import { Splash4 } from "../Images";
+import AboutPage from "../AboutPage";
 import "./SplashPage.css";
 
-import { Link } from "react-router-dom";
-import * as routes from "../../constants/routes";
+// import { Link } from "react-router-dom";
+// import * as routes from "../../constants/routes";
 
 const splashStyle = {
   backgroundImage: `url(${Splash4})`,
@@ -16,14 +17,8 @@ const splashStyle = {
 
 const SplashPage = () => (
   <div style={splashStyle}>
-    <div className="splash-container">
-    <Link to={routes.ABOUT}>
-      <div className="splash-logo">
-        <span className="pb">
-          {"{"}pb{"}"}
-        </span>HARMONY
-      </div>
-      </Link>
+    <div className="splash-container" >
+      <AboutPage />
     </div>
   </div>
 );
