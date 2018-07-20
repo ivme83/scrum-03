@@ -11,4 +11,3 @@ export const TEACHER_VIEW_CLASS     = '/teacher-class-view';
 export const ADD_PROJECT            = '/add-project';
 export const CREATE_PROJECT         = '/create-project';
 export const ADD_CLASS              = '/add-class';
-export const ABOUT                  = '/about';

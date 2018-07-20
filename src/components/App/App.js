@@ -28,7 +28,6 @@ import EditProject        from '../EditProject';
 import * as routes        from '../../constants/routes';
 
 import withAuthentication from '../withAuthentication';
-import AboutPage from '../AboutPage/AboutPage';
 
 const SplashLayout = ({children, ...rest}) => {
   return (
@@ -51,24 +50,23 @@ const App = () =>
   <Router>
     <div className="main-container">
       <Navigation />
-        <Route exact path={routes.SPLASH}               component={() => <SplashLayout><SplashPage /></SplashLayout>} />
-        <Route exact path={routes.SIGN_UP}              component={() => <SplashLayout><SignUpPage /></SplashLayout>} />
-        <Route exact path={routes.SIGN_IN}              component={() => <SplashLayout><SignInPage /></SplashLayout>} />
-        <Route exact path={routes.PASSWORD_FORGET}      component={() => <SplashLayout><PasswordForgetPage /></SplashLayout>} />
-        <Route exact path={routes.ABOUT}                component={() => <SplashLayout><AboutPage /></SplashLayout>} />
-        <Route exact path={routes.HOME}                 component={() => <UserLayout><HomePage /></UserLayout>} />
-        <Route exact path={routes.ACCOUNT}              component={() => <UserLayout><AccountPage /></UserLayout>} />
-        <Route exact path={routes.TEACHER_CLASS}        component={() => <UserLayout><ClassMenu /></UserLayout>} />
-        <Route exact path={routes.STUDENT_CLASS}        component={() => <UserLayout><StudentMenu /></UserLayout>} />
-        <Route exact path={routes.STUDENT_PROJECT}      component={() => <UserLayout><ProjectMenu /></UserLayout>} />
-        <Route exact path={routes.ADD_PROJECT}          component={() => <UserLayout><AddProject /></UserLayout>} />
-        <Route exact path={routes.CREATE_PROJECT}       component={() => <UserLayout><CreateProject /></UserLayout>} />
-        <Route exact path={routes.ADD_CLASS}            component={() => <UserLayout><AddClass /></UserLayout>} />
-        <Route path="/teacher-student-view/:id"         component={() => <UserLayout><TeacherStudentView /></UserLayout>} />
-        <Route path="/student-project/:id"              component={() => <UserLayout><DisplayProjects /></UserLayout>} />
-        <Route path="/student-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
-        <Route path="/teacher-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
-        <Route path="/edit-project/:id"                 component={() => <UserLayout><EditProject /></UserLayout>} />
+      <Route exact path={routes.SPLASH}               component={() => <SplashLayout><SplashPage /></SplashLayout>} />
+      <Route exact path={routes.SIGN_UP}              component={() => <SplashLayout><SignUpPage /></SplashLayout>} />
+      <Route exact path={routes.SIGN_IN}              component={() => <SplashLayout><SignInPage /></SplashLayout>} />
+      <Route exact path={routes.PASSWORD_FORGET}      component={() => <SplashLayout><PasswordForgetPage /></SplashLayout>} />
+      <Route exact path={routes.HOME}                 component={() => <UserLayout><HomePage /></UserLayout>} />
+      <Route exact path={routes.ACCOUNT}              component={() => <UserLayout><AccountPage /></UserLayout>} />
+      <Route exact path={routes.TEACHER_CLASS}        component={() => <UserLayout><ClassMenu /></UserLayout>} />
+      <Route exact path={routes.STUDENT_CLASS}        component={() => <UserLayout><StudentMenu /></UserLayout>} />
+      <Route exact path={routes.STUDENT_PROJECT}      component={() => <UserLayout><ProjectMenu /></UserLayout>} />
+      <Route exact path={routes.ADD_PROJECT}          component={() => <UserLayout><AddProject /></UserLayout>} />
+      <Route exact path={routes.CREATE_PROJECT}       component={() => <UserLayout><CreateProject /></UserLayout>} />
+      <Route exact path={routes.ADD_CLASS}            component={() => <UserLayout><AddClass /></UserLayout>} />
+      <Route path="/teacher-student-view/:id"         component={() => <UserLayout><TeacherStudentView /></UserLayout>} />
+      <Route path="/student-project/:id"              component={() => <UserLayout><DisplayProjects /></UserLayout>} />
+      <Route path="/student-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
+      <Route path="/teacher-classes/:id"              component={() => <UserLayout><DisplayClasses /></UserLayout>} />
+      <Route path="/edit-project/:id"                 component={() => <UserLayout><EditProject /></UserLayout>} />
     </div>
   </Router>
 
