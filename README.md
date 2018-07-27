@@ -20,7 +20,7 @@ https://github.com/ivme83/scrum-server
 ## Tech Used
 
 * ReactJS
-* React Contextds
+* React Context
 * Firebase Authentication
 * Axios
 * Bloomer - Bulma stateless React components
